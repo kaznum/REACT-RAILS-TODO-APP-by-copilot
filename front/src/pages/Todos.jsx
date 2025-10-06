@@ -4,6 +4,7 @@ import { removeToken } from '../utils/auth'
 import { getTodos, createTodo, updateTodo, deleteTodo, getCurrentUser } from '../api/todos'
 import TodoForm from '../components/TodoForm'
 import TodoList from '../components/TodoList'
+import { sortTodos } from '../utils/todoSort'
 import './Todos.css'
 
 function Todos() {
@@ -43,7 +44,7 @@ function Todos() {
   const handleAddTodo = async (todoData) => {
     try {
       const newTodo = await createTodo(todoData)
-      setTodos([...todos, newTodo])
+      setTodos(sortTodos([...todos, newTodo]))
       setShowForm(false)
     } catch (error) {
       console.error('TODO作成に失敗しました:', error)
@@ -54,7 +55,7 @@ function Todos() {
   const handleUpdateTodo = async (id, todoData) => {
     try {
       const updatedTodo = await updateTodo(id, todoData)
-      setTodos(todos.map(todo => todo.id === id ? updatedTodo : todo))
+      setTodos(sortTodos(todos.map(todo => todo.id === id ? updatedTodo : todo)))
       setEditingTodo(null)
       setShowForm(false)
     } catch (error) {
