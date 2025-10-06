@@ -12,14 +12,16 @@ RSpec.describe Todo, type: :model do
   end
 
   describe 'default values' do
-    let(:todo) { build(:todo, priority: nil, completed: nil) }
-
     it 'sets priority to 1 by default' do
+      user = create(:user)
+      todo = Todo.new(title: 'Test Todo', user: user)
       todo.save
       expect(todo.priority).to eq(1)
     end
 
     it 'sets completed to false by default' do
+      user = create(:user)
+      todo = Todo.new(title: 'Test Todo', user: user)
       todo.save
       expect(todo.completed).to be false
     end
