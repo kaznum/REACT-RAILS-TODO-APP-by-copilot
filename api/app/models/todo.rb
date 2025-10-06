@@ -10,7 +10,7 @@ class Todo < ApplicationRecord
 
   # 優先度の降順、期限の昇順で表示（期限なしは最初に表示）
   scope :sorted, lambda {
-    order(priority: :desc, Arel.sql('CASE WHEN due_date IS NULL THEN 0 ELSE 1 END'), due_date: :asc)
+    order(priority: :desc, Arel.sql('CASE WHEN due_date IS NULL THEN 0 ELSE 1 END') => :asc, due_date: :asc)
   }
 
   def overdue?

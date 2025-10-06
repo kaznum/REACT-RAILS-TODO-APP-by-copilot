@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::API
   include ActionController::Cookies
 
-  before_action :authorize_request, except: [:health]
+  before_action :authorize_request
 
   attr_reader :current_user
 

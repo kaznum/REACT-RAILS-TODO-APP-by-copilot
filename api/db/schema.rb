@@ -11,18 +11,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.1].define(version: 2023_12_01_000002) do
-  create_table "users", force: :cascade do |t|
-    t.string "email", null: false
-    t.string "name"
-    t.string "image_url"
-    t.string "provider", null: false
-    t.string "uid", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true
-  end
-
   create_table "todos", force: :cascade do |t|
     t.string "title", null: false
     t.date "due_date"
@@ -34,6 +22,18 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_01_000002) do
     t.index ["user_id", "due_date"], name: "index_todos_on_user_id_and_due_date"
     t.index ["user_id", "priority"], name: "index_todos_on_user_id_and_priority"
     t.index ["user_id"], name: "index_todos_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", null: false
+    t.string "name"
+    t.string "image_url"
+    t.string "provider", null: false
+    t.string "uid", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true
   end
 
   add_foreign_key "todos", "users"
