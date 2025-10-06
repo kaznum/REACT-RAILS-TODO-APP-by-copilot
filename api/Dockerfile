@@ -1,10 +1,12 @@
 FROM ruby:3.2
 
-RUN apt-get update -qq && apt-get install -y build-essential libsqlite3-dev nodejs npm
+RUN apt-get update -qq && \
+    apt-get install -y build-essential libsqlite3-dev nodejs npm ca-certificates && \
+    update-ca-certificates
 
 WORKDIR /app
 
-COPY Gemfile Gemfile.lock ./
+COPY Gemfile ./
 RUN bundle install
 
 COPY . .
