@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import Login from './pages/Login'
 import Todos from './pages/Todos'
+import Manual from './pages/Manual'
 import { isAuthenticated } from './utils/auth'
 import './App.css'
 
@@ -18,6 +19,7 @@ function App() {
             <Todos />
           </PrivateRoute>
         } />
+        <Route path="/manual" element={<Manual />} />
         <Route path="/" element={<Navigate to="/login" />} />
       </Routes>
     </Router>

@@ -115,6 +115,14 @@ function Todos() {
                 <img src={user.image_url} alt={user.name} className="user-avatar" />
               )}
               <span className="user-name">{user.name}</span>
+              <a 
+                href="/manual" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="manual-link"
+              >
+                📖 マニュアル
+              </a>
               <button onClick={handleLogout} className="logout-button">
                 ログアウト
               </button>

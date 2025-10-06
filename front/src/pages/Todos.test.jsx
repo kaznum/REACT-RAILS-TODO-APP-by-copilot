@@ -75,4 +75,28 @@ describe('Todos - Sorting behavior', () => {
     // Verify create function is available
     expect(todosApi.createTodo).toBeDefined()
   })
+
+  it('displays manual link in header', async () => {
+    const mockTodos = []
+    const mockUser = { id: 1, name: 'Test User', email: 'test@example.com' }
+
+    todosApi.getCurrentUser.mockResolvedValue(mockUser)
+    todosApi.getTodos.mockResolvedValue(mockTodos)
+
+    render(
+      <BrowserRouter>
+        <Todos />
+      </BrowserRouter>
+    )
+
+    await waitFor(() => {
+      expect(screen.getByText('Test User')).toBeInTheDocument()
+    })
+
+    // Verify manual link exists and opens in new tab
+    const manualLink = screen.getByText(/マニュアル/)
+    expect(manualLink).toBeInTheDocument()
+    expect(manualLink).toHaveAttribute('href', '/manual')
+    expect(manualLink).toHaveAttribute('target', '_blank')
+  })
 })
