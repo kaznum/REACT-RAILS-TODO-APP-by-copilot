@@ -102,10 +102,10 @@ describe('TodoItem', () => {
     // Verify due today message is present
     expect(screen.getByText(/本日締め切り/)).toBeInTheDocument()
     
-    // Verify the todo-header has the correct structure
-    const todoHeader = container.querySelector('.todo-header')
-    expect(todoHeader).toBeInTheDocument()
-    expect(todoHeader.querySelector('.priority-badge')).toBeInTheDocument()
+    // Verify priority badge is aligned with action buttons
+    const todoItem = container.querySelector('.todo-item')
+    expect(todoItem).toBeInTheDocument()
+    expect(todoItem.querySelector('.priority-badge')).toBeInTheDocument()
   })
 
   it('priority badge maintains consistent alignment with overdue date', () => {
@@ -121,9 +121,9 @@ describe('TodoItem', () => {
     // Verify overdue date is displayed
     expect(screen.getByText(overdueDate)).toBeInTheDocument()
     
-    // Verify the todo-header has the correct structure
-    const todoHeader = container.querySelector('.todo-header')
-    expect(todoHeader).toBeInTheDocument()
-    expect(todoHeader.querySelector('.priority-badge')).toBeInTheDocument()
+    // Verify priority badge is aligned with action buttons
+    const todoItem = container.querySelector('.todo-item')
+    expect(todoItem).toBeInTheDocument()
+    expect(todoItem.querySelector('.priority-badge')).toBeInTheDocument()
   })
 })

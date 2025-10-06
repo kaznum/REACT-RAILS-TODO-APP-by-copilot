@@ -64,9 +64,6 @@ function TodoItem({ todo, onEdit, onDelete, onToggleComplete }) {
               {todo.title}
             </h3>
           </div>
-          <span className={`priority-badge ${getPriorityClass(todo.priority)}`}>
-            {getPriorityLabel(todo.priority)}
-          </span>
         </div>
         
         {todo.due_date && (
@@ -75,6 +72,10 @@ function TodoItem({ todo, onEdit, onDelete, onToggleComplete }) {
           </div>
         )}
       </div>
+
+      <span className={`priority-badge ${getPriorityClass(todo.priority)}`}>
+        {getPriorityLabel(todo.priority)}
+      </span>
 
       <div className="todo-actions">
         <button onClick={() => onEdit(todo)} className="edit-button">

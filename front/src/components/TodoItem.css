@@ -39,7 +39,6 @@
 
 .todo-header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   gap: 12px;
 }
@@ -78,7 +77,6 @@
   font-weight: 700;
   white-space: nowrap;
   flex-shrink: 0;
-  align-self: center;
 }
 
 .priority-high {
