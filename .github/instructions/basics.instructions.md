@@ -26,7 +26,8 @@ Railsのアプリケーションプロジェクトで、TODOの追加、編集�
 - `docker compose exec front npm run server` - フロントエンド開発用サーバーの起動
 - `docker compose exec front npm run build` - フロントエンドのbuild
 - `docker compose exec front npm run server:dist` - フロントエンドのbuild済みコード用WEBサーバー
-- `docker compose exec front npm run test` - フロントエンドのテスト実行
+- `docker compose exec front npm run test` - フロントエンドのテスト実行（watchモード）
+- `docker compose exec front npm run test:run` - フロントエンドのテスト実行（1回のみ）
 - `docker compose exec front npm run lint` - ESLintによるコード検証
 
 ## Architecture
