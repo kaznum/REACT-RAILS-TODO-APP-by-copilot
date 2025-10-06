@@ -111,6 +111,14 @@ function Todos() {
           <h1 className="todos-title">TODO管理</h1>
           {user && (
             <div className="user-info">
+              <a 
+                href="/manual" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="manual-link"
+              >
+                📖 マニュアル
+              </a>
               {user.image_url && (
                 <img src={user.image_url} alt={user.name} className="user-avatar" />
               )}
