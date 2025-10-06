@@ -2,9 +2,9 @@ source 'https://rubygems.org'
 
 ruby '3.2.9'
 
+gem 'puma', '>= 5.0'
 gem 'rails', '~> 7.1.0'
 gem 'sqlite3', '~> 1.4'
-gem 'puma', '>= 5.0'
 
 # Authentication
 gem 'jwt'
@@ -26,9 +26,9 @@ gem 'bootsnap', require: false
 
 group :development, :test do
   gem 'debug', platforms: %i[mri windows]
-  gem 'rspec-rails', '~> 6.0'
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'rspec-rails', '~> 6.0'
 end
 
 group :development do
@@ -38,6 +38,6 @@ group :development do
 end
 
 group :test do
-  gem 'shoulda-matchers', '~> 5.0'
   gem 'database_cleaner-active_record'
+  gem 'shoulda-matchers', '~> 5.0'
 end

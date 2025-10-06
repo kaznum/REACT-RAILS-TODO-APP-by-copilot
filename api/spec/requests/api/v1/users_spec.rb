@@ -9,8 +9,8 @@ RSpec.describe 'Api::V1::Users', type: :request do
     it 'returns current user' do
       get '/api/v1/current_user', headers: headers
       expect(response).to have_http_status(:ok)
-      
-      json = JSON.parse(response.body)
+
+      json = response.parsed_body
       expect(json['id']).to eq(user.id)
       expect(json['email']).to eq(user.email)
       expect(json['name']).to eq(user.name)

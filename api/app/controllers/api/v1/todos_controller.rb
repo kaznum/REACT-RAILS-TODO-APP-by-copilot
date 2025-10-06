@@ -1,7 +1,7 @@
 module Api
   module V1
     class TodosController < ApplicationController
-      before_action :set_todo, only: [:show, :update, :destroy]
+      before_action :set_todo, only: %i[show update destroy]
 
       def index
         @todos = current_user.todos.sorted

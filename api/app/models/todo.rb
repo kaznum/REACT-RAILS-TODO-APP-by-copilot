@@ -14,10 +14,10 @@ class Todo < ApplicationRecord
   }
 
   def overdue?
-    !completed && due_date.present? && due_date < Date.today
+    !completed && due_date.present? && due_date < Time.zone.today
   end
 
   def due_today?
-    !completed && due_date == Date.today
+    !completed && due_date == Time.zone.today
   end
 end

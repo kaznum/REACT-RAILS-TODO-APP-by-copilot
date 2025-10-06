@@ -12,12 +12,12 @@ RSpec.describe 'Api::V1::Todos', type: :request do
     it 'returns user todos' do
       get '/api/v1/todos', headers: headers
       expect(response).to have_http_status(:ok)
-      expect(JSON.parse(response.body).size).to eq(3)
+      expect(response.parsed_body.size).to eq(3)
     end
 
     it 'does not return other users todos' do
       get '/api/v1/todos', headers: headers
-      todo_ids = JSON.parse(response.body).map { |t| t['id'] }
+      todo_ids = response.parsed_body.pluck('id')
       expect(todo_ids).not_to include(other_user_todo.id)
     end
 
@@ -33,7 +33,7 @@ RSpec.describe 'Api::V1::Todos', type: :request do
     it 'returns the todo' do
       get "/api/v1/todos/#{todo.id}", headers: headers
       expect(response).to have_http_status(:ok)
-      expect(JSON.parse(response.body)['id']).to eq(todo.id)
+      expect(response.parsed_body['id']).to eq(todo.id)
     end
 
     it 'returns 404 for non-existent todo' do
@@ -53,7 +53,7 @@ RSpec.describe 'Api::V1::Todos', type: :request do
       {
         todo: {
           title: 'Test TODO',
-          due_date: Date.today,
+          due_date: Time.zone.today,
           priority: 2
         }
       }
