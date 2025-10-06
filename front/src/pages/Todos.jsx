@@ -111,6 +111,10 @@ function Todos() {
           <h1 className="todos-title">TODO管理</h1>
           {user && (
             <div className="user-info">
+              {user.image_url && (
+                <img src={user.image_url} alt={user.name} className="user-avatar" />
+              )}
+              <span className="user-name">{user.name}</span>
               <a 
                 href="/manual" 
                 target="_blank" 
@@ -119,10 +123,6 @@ function Todos() {
               >
                 📖 マニュアル
               </a>
-              {user.image_url && (
-                <img src={user.image_url} alt={user.name} className="user-avatar" />
-              )}
-              <span className="user-name">{user.name}</span>
               <button onClick={handleLogout} className="logout-button">
                 ログアウト
               </button>
