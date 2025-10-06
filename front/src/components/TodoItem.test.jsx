@@ -90,4 +90,40 @@ describe('TodoItem', () => {
     const checkbox = screen.getByRole('checkbox')
     expect(checkbox).not.toBeChecked()
   })
+
+  it('priority badge maintains consistent alignment with today due date', () => {
+    const today = new Date().toISOString().split('T')[0]
+    const todoToday = { ...mockTodo, due_date: today }
+    const { container } = render(<TodoItem todo={todoToday} {...mockHandlers} />)
+    
+    // Verify priority badge is present
+    expect(screen.getByText('中')).toBeInTheDocument()
+    
+    // Verify due today message is present
+    expect(screen.getByText(/本日締め切り/)).toBeInTheDocument()
+    
+    // Verify priority badge is aligned with action buttons
+    const todoItem = container.querySelector('.todo-item')
+    expect(todoItem).toBeInTheDocument()
+    expect(todoItem.querySelector('.priority-badge')).toBeInTheDocument()
+  })
+
+  it('priority badge maintains consistent alignment with overdue date', () => {
+    const yesterday = new Date()
+    yesterday.setDate(yesterday.getDate() - 1)
+    const overdueDate = yesterday.toISOString().split('T')[0]
+    const todoOverdue = { ...mockTodo, due_date: overdueDate }
+    const { container } = render(<TodoItem todo={todoOverdue} {...mockHandlers} />)
+    
+    // Verify priority badge is present
+    expect(screen.getByText('中')).toBeInTheDocument()
+    
+    // Verify overdue date is displayed
+    expect(screen.getByText(overdueDate)).toBeInTheDocument()
+    
+    // Verify priority badge is aligned with action buttons
+    const todoItem = container.querySelector('.todo-item')
+    expect(todoItem).toBeInTheDocument()
+    expect(todoItem.querySelector('.priority-badge')).toBeInTheDocument()
+  })
 })
