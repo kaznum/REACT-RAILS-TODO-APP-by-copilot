@@ -170,6 +170,15 @@ docker compose exec front npm run test
   - 期限切れ（未完了）: 赤色太字
   - 完了済み: 通常表示
 
+## GitHub Copilot サポート
+
+このプロジェクトは GitHub Copilot のための詳細なインストラクションを提供しています。
+
+- プロジェクト概要、アーキテクチャ、開発コマンドなど: [`.github/instructions/basics.instructions.md`](.github/instructions/basics.instructions.md)
+- WEB API 仕様: [`.github/instructions/webapi-interface.md`](.github/instructions/webapi-interface.md)
+
+これらのインストラクションにより、GitHub Copilot がプロジェクト固有のコンテキストを理解し、より適切なコード提案を行えます。
+
 ## ライセンス
 
 MIT
